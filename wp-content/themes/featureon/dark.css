@@ -1,0 +1,178 @@
+.boxed #wrapper { background: #181818!important; }
+
+body,
+.author-bio .bio-desc { color: #999; }
+a:hover,
+.author-bio .bio-name,
+.post-meta a:hover,
+.single .content.no-thumbnail .ontop,
+.entry blockquote { color: #ccc; }
+
+.alx-tab .tab-item-category a:hover,
+.alx-posts .post-item-category a:hover { color: #ccc!important; }
+
+body,
+.page .content,
+.single .content,
+.content:before,
+.post-standard,
+.post-standard .post-content,
+.alx-posts li,
+.alx-posts .post-item-inner { background: #181818; }
+
+.site-title a:hover { color: #444; }
+
+#subheader,
+.page-title strong,
+.post-tags a,
+.sharrre .count { background: #282828; }
+.sharrre .count:after { border-color: #282828 transparent transparent; }
+
+.featured-large:nth-child(1) { border-bottom: 4px solid #181818; }
+
+.widget > h3,
+.author-bio { border-color: #222; }
+
+.post-standard,
+.sidebar .post-nav li a,
+.single .post-byline { border-bottom-color: #222; }
+
+h1, h2, h3, h4, h5, h6,
+.post-title a,
+.post-nav li a span,
+.alx-tab .tab-item-title a, 
+.alx-tab .tab-item-comment a, 
+.alx-posts .post-item-title a { color: #ccc; }
+
+.post-meta,
+.post-nav li a strong,
+.single .post-byline,
+.alx-tab .tab-item-date, 
+.alx-tab .tab-item-name, 
+.alx-posts .post-item-date { color: #666; }
+
+.single .post-title.ontop { border-bottom: 0; }
+
+.notebox { background: #282828; color: #999; }
+.notebox:after { border-bottom-color: #282828; }
+
+.wp-pagenavi a,
+.wp-pagenavi span { color: #777; }
+.wp-pagenavi a:hover,
+.wp-pagenavi a:active,
+.wp-pagenavi span.current { color: #ccc; }
+.wp-pagenavi a { border-bottom-color: #222; border-top-color: #222; }
+.wp-pagenavi a:hover,
+.wp-pagenavi a:active,
+.wp-pagenavi span.current { border-top: 1px solid #222; }
+
+.widget { color: #999; }
+.widget a { color: #bbb; }
+.widget a:hover { color: #0fb4d2; }
+.widget > h3 { border-color: #222;  }
+.widget > h3,
+.widget > h3 a,
+.widget > h3 a:hover { color: #fff; }
+.widget select { background: transparent; border-color: #282828; color: #777; }
+
+.widget > ul li:before,
+.widget > ul li a:before,
+.widget > div > ul li a:before  { color: #777; opacity: 0.5; }
+.widget_calendar caption:before,
+.widget > ul li a:hover:before { color: #fff; }
+
+.widget_archive ul li, 
+.widget_categories ul li, 
+.widget_links ul li, 
+.widget_meta ul li, 
+.widget_recent_comments ul li, 
+.widget_recent_entries ul li,
+.widget_rss ul li,
+.widget_pages ul li a,
+.widget_nav_menu ul li a,
+.alx-tab li,
+.alx-posts li,
+.widget_calendar th, 
+.widget_calendar td { border-color: #222; }
+
+.widget_archive ul li,
+.widget_categories ul li,
+.widget_links ul li,
+.widget_recent_comments ul li,
+.widget_recent_entries ul li { color: #777; }
+
+.widget_rss ul li a { color: #0fb4d2; }
+.widget_rss ul li span.rss-date { color: #ccc; }
+
+.widget_search input.search { background: transparent; border: 1px solid #333; }
+.widget_search input.search:focus { color: #ccc; }
+
+.widget_calendar a:hover { color: #ccc!important; }
+.widget_calendar a { color: #0fb4d2; }
+.widget_calendar thead { background: #333; color: #ccc; -webkit-box-shadow: 0 1px 0 #333; box-shadow: inset 0 -1px 0 #333; }
+.widget_calendar caption { background: #0fb4d2; }
+
+.alx-tabs-nav li a { border-color: #333; }
+.alx-tabs-nav li.active a { color: #0fb4d2; border-bottom-color: #0fb4d2; }
+
+.alx-tab .tab-item-category a,
+.alx-posts .post-item-category a,
+.alx-tab li:hover .tab-item-title a,
+.alx-tab li:hover .tab-item-comment a,
+.alx-posts li:hover .post-item-title a { color: #0fb4d2; }
+.alx-tab .tab-item-category a:hover,
+.alx-posts .post-item-category a:hover { color: #ccc!important; }
+
+.alx-tab .tab-item-date, 
+.alx-tab .tab-item-name, 
+.alx-posts .post-item-date { color: #777; }
+
+.child-menu a { color: #bbb; }
+.child-menu > li > ul { border-top: 1px solid #282828; border-bottom: 1px solid #282828; }
+.child-menu > li > ul > li > a { border-bottom: 1px solid #282828; border-left: 1px solid #282828; border-right: 1px solid #282828; }
+.child-menu > li ul ul { border-left: 10px solid #282828; border-right: 1px solid #282828; border-bottom: 1px solid #282828; }
+.child-menu > li ul ul a:hover,
+.child-menu > li ul ul li.current_page_item > a { background: #282828; }
+
+.dropcap { color: #ccc; }
+.pullquote-left	{ color: #ccc; border-left: 6px solid #444;  }
+.pullquote-right { color: #ccc; border-right: 6px solid #444; }
+.highlight { color: #ccc; border-bottom: 1px dotted #444; }
+hr, .hr { background: #282828; }
+
+.entry table tr.alt { background: #282828; }
+.entry table td { border-bottom: 1px solid #282828; }
+.entry table th { border-top: 1px solid #282828; border-bottom: 1px solid #282828; }
+
+.comment-tabs,
+.comment-tabs li a { border-bottom-color: #282828; }
+.comment-tabs li span { background: #282828; }
+.comment-tabs li a:hover { border-color: #444; color: #ccc; }
+.commentlist .fn, 
+.pinglist .ping-link { color: #ccc; }
+.commentlist .comment-meta a, 
+.pinglist .ping-meta { color: #777; }
+.commentlist .comment-body p,
+.themeform label { color: #bbb; }
+#commentform { background: #282828; }
+
+.col-2cl .main-inner { background-image: url(img/sidebar/dark/s-right-s1.png); }
+.col-2cr .main-inner { background-image: url(img/sidebar/dark/s-left.png); }
+.col-3cm .main { background-image: url(img/sidebar/dark/s-right-s2.png); }
+.col-3cm .main-inner { background-image: url(img/sidebar/dark/s-left.png); }
+.col-3cl .main-inner { background-image: url(img/sidebar/dark/s-right-dual-full-expand.png); }
+.col-3cr .main-inner { background-image: url(img/sidebar/dark/s-left-dual-full-expand.png); }
+
+@media only screen and (min-width: 480px) and (max-width: 1260px) {
+	.col-3cm .main { background-image: url(img/sidebar/dark/s-right-collapse.png); }
+}
+@media only screen and (min-width: 961px) and (max-width: 1260px) {
+	.col-3cl .main-inner { background-image: url(img/sidebar/dark/s-right-dual-half-collapse.png); }
+	.col-3cr .main-inner { background-image: url(img/sidebar/dark/s-left-dual-half-collapse.png); }	
+}
+@media only screen and (min-width: 480px) and (max-width: 960px) {
+	.col-2cl .main-inner { background-image: url(img/sidebar/dark/s-right-collapse.png); }
+	.col-3cm .main-inner { background-image: url(img/sidebar/dark/s-left-collapse.png); }	
+	.col-3cl .main-inner { background-image: url(img/sidebar/dark/s-right-dual-full-collapse.png); }
+	.col-3cr .main-inner { background-image: url(img/sidebar/dark/s-left-dual-full-collapse.png); }	
+}

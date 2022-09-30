@@ -1,0 +1,410 @@
+/*
+Theme Name: Teczilla Marketing
+Theme URI: 
+Template: teczilla
+Author: avadantathemes
+Author URI: https://www.avadantathemes.com/
+Description:  Teczilla marketing is a child theme of teczilla wordpress theme perfect for corporate, finance , startup etc.It is a Very creative, fully customizable and multipurpose theme.Any website you want to make with this theme will look beautiful and compaitable.It has built in typography also dynamic typography also has unlimited color optiopns in it.The theme suitable for saas application website, architecture, interior design, corporate, corporate, business, decoration, business, furniture, home decor, law firm, corporate, insurance, app landing page, it solutions, shop ecommerce, marketing, gym, blog, travel corporate, construction,  spa salons, industries, Beauty, photography, and many other websites compatible. Service option has icon and image options. Full Width responsive page layout. SEO optimized pages and fast speed loading.Compatible with gutenberg, elemnetor page builder WooCommerce, contact form 7, Jetpack, Google analytics and so many popular premium & free plugins nicely works with teczilla theme. For more theme information, check out Theme demo here at https://www.avadantathemes.com/demo/teczilla-marketing/ and theme instructions here at https://www.avadantathemes.com/documentation/teczilla-free-theme/
+Version: 1.1
+Requires at least: 5.0
+Tested up to: 6.0
+Requires PHP: 5.6
+Text Domain: teczilla-marketing
+Tags: one-column, two-columns, four-columns, right-sidebar, flexible-header, custom-background, custom-header, custom-menu, editor-style, featured-images, footer-widgets, rtl-language-support, translation-ready, full-width-template, custom-logo, blog, e-commerce, post-formats, theme-options, threaded-comments,  portfolio
+License: GNU General Public License v2 or later
+License URI:  http://www.gnu.org/licenses/gpl-2.0.html/
+*/
+
+body{
+
+	font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+p{
+
+    color: #66686f;
+}
+
+.full-width-header .toolbar-area{
+
+    background: #2f3338 !important;
+    margin-top: -7px;
+    margin-bottom: -19px;
+}
+
+
+.tec-footer .footer-bottom {
+    padding: 10px 0 !important;
+    background-color: #1b1b1b !important;
+    padding: 36px 0;
+    border-top: 1px solid #303030;
+    z-index: 99999;
+}
+
+.tec-footer .text-right{
+
+    padding-top: 5px;
+
+}
+
+.full-width-header .toolbar-area .toolbar-sl-share ul li .tec-icons{
+
+color: #000 !important;
+
+}
+
+.comment-respond .comment-form-comment textarea,
+.comment-respond .comment-form-author input,
+.comment-respond .comment-form-email input,
+.comment-respond .comment-form-url input{
+
+    box-shadow: none !important;
+}
+
+.full-width-header .toolbar-area .toolbar-contact ul li,
+.full-width-header .toolbar-area .toolbar-contact ul li a,
+.full-width-header .toolbar-area .toolbar-contact ul li i{
+
+    color: #9b9fa2;
+}
+
+.current_page_item {
+    background-color:transparent !important;
+	
+}
+.full-width-header .toolbar-area .toolbar-sl-share ul li a {
+    color: #fff !important;
+    font-size: 15px;
+    height: 100%;
+    padding-left: 11px;
+    padding-right: 11px;
+        border-radius: 2px;
+}
+
+.full-width-header .toolbar-area .toolbar-sl-share ul {
+    text-align: right;
+    margin-right: 0;
+}
+
+.footer-bottom .menu>.menu-item>a, .menu .page_item a{
+
+    color: #fff !important;
+}
+
+
+.full-width-header .teczilla-menu-area {
+    background: #ffffff;
+    position: relative;
+        padding-bottom: 10px;
+}
+
+
+
+.sidebar{
+
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    padding: 26px 30px 10px;
+
+}
+
+.menu>.menu-item>a, .menu .page_item a{
+
+	color: #000 !important;
+}
+
+@media screen and (min-width: 992px){
+.sticky {
+    background: #fff !important;
+    padding-top: 15px;
+}
+}
+
+.teczilla-title{
+
+	margin-bottom: 0;
+}
+
+
+.shadow{
+
+    box-shadow: none !important;
+}
+.sidebar-widget.widget_recent_entries li:last-child,
+ .sidebar-widget .wp-block-latest-posts__list li:last-child{
+
+    padding-top: 0;
+ }
+
+
+.menu-sticky{
+
+	box-shadow: none;
+}
+
+.blog-wrap .content-part .blog-meta {
+    padding-left: 0;
+    margin-bottom: 7px;
+}
+
+#scrollUp i {
+    border-radius: 50%;
+}
+
+.error-44{
+	position: relative;
+}
+
+.error-44:before {
+    top: 0;
+    background: #000;
+    position: absolute;
+    content: "";
+    opacity: 0.85;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    }
+
+
+    .menu-toggle {
+    background-color: transparent;
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    color: #000;
+    position: absolute;
+    display: none;
+    top: -11px;
+    font-size: 14px;
+    right: 20px;
+    font-size: 0.875rem;
+    font-size: 20px;
+    font-weight: 800;
+    /* float: right; */
+    margin-top: -40px;
+    text-shadow: none;
+}
+
+
+@media only screen and (max-width: 991px){
+.main-navigation {
+    padding: 0;
+    margin-top: 0;
+}
+
+.full-width-header .tec-agncy-stick {
+    padding-top: 0;
+}
+}
+
+.carousel-control-next-icon:before,
+.carousel-control-prev-icon:before{
+
+background: #fff !important;
+    line-height: 70px;
+    padding: 9px 7px;
+    color: #000;
+}
+
+.carousel-control-next, .carousel-control-prev {
+    opacity: 1;
+        width: auto;
+}
+
+.home-slider .container .slider-caption .slider-bottom .slider-btn{
+
+    color: #fff;
+}
+
+.widget_tag_cloud .wp-block-tag-cloud a{
+
+    color: #fff;
+}
+
+.nav-links .page-numbers.current {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 15px;
+    height: 36px;
+    padding: 11px 18px 9px 12px;
+    width: 36px;
+    margin: 0 10px 10px 0;
+    border-radius: 15%;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    transition: all 0.4s ease 0s;
+}
+
+.nav-links .page-numbers {
+    color: #000;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 27px;
+    height: 36px;
+    padding: 6px 15px 16px 13px;
+    width: auto;
+    border-radius: 16%;
+    margin: 0 10px 10px 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    transition: all 0.4s ease 0s;
+}
+
+.sidebar .widget_search{
+
+    padding-top: 16px;
+    padding-bottom: 10px;
+}
+
+.section-xx .blog-wrap {
+    margin-top: 46px;
+    border: none !important;
+}
+
+.footer-bottom #footer-menu{
+
+    display: inline-flex;
+}
+
+.footer-bottom #footer-menu li {
+    padding-left: 12px;
+}
+
+.logo-area{
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.full-width-header .toolbar-area .toolbar-sl-share ul li {
+    width: auto;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    width: 27px !important;
+}
+.avadanta-title a {
+    font-size: 40px;    
+}
+
+
+/*==================================
+        Sidebar
+==================================*/
+
+::selection{
+    background-color: #C69C6D;
+}
+
+
+.wp-block-search__inside-wrapper .wp-block-search__button{
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+    background-color: #C69C6D;
+    padding-right: 30px;
+    padding-left: 30px;
+    border: none;
+    border-radius: 0px;
+    box-shadow: 0px 16px 0px -10px #2A2A2A;
+}
+.wp-block-search__inside-wrapper .wp-block-search__button:hover{
+    background-color: #2A2A2A;
+    box-shadow: 0px 16px 0px -10px #C69C6D;
+}
+.sidebar-widget.widget_block h2{
+    font-size: 20px;
+    color: #ffffff;
+    font-weight: 600;
+    background-color: #C69C6D;
+    padding: 14px 30px;
+    margin-bottom: 30px;
+    box-shadow: 0px 16px 0px -10px #2A2A2A;
+}
+.widget_block{
+    margin-top: 25px;    
+}
+.sidebar-widget .wp-block-latest-posts__list li a{
+    font-size: 20px;
+    font-weight: 600;
+}
+.sidebar-widget .wp-block-latest-comments__comment-meta a{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/*==================================
+        Blog Section
+==================================*/
+
+.blog-wraped{
+    text-align: center;
+    padding: 40px;
+    margin-bottom: 40px;
+    border-style: none;
+    border-radius: 0px;
+    box-shadow: 0px 5px 30px 0px rgb(0 0 0 / 10%);
+}
+.blog-wraped .image-sec{
+    margin: 0 0 30px;
+    width: 100%;
+}
+.blog-wraped .image-sec img{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.blog-wraped .con-sec h3{
+    font-size: 32px;
+    line-height: 1.3;
+}
+.blog-wraped .con-sec h3 a,
+.blog-wraped .con-sec li a{
+    color: #2a2a2a;
+}
+.blog-wraped .con-sec li a:hover{
+    color: #C69C6D;
+}
+.blog-wraped .con-sec li i{
+    margin-right: 4px;
+}
+.blog-wraped .con-sec .con-part p{
+    font-size: 14px;
+    font-weight: 500 !important;
+    color: rgba(0,0,0,0.5);
+    font-weight: 400;
+    line-height: 24px;
+}
+.blog-wraped .con-sec .read-sec{
+    font-size: 13px;
+    color: #fff;
+    background-color: #C69C6D;
+    padding: 9px 23px 9px 23px;
+    margin: 30px auto 10px;
+    box-shadow: 0px 16px 0px -10px #2A2A2A;
+}
+.blog-wraped .con-sec .read-sec:hover{
+    background-color: #2A2A2A;
+    box-shadow: 0px 16px 0px -10px #C69C6D;
+}
+.sidebar-widget .wp-block-categories .cat-item:before{
+    content: '\f105';
+    padding-bottom: 6px;
+}
+.nav-links .page-numbers.current{
+    background: #C69C6D;
+    color: #fff;
+}
+.nav-links .page-numbers{
+    color: #2a2a2a;
+}
+.navigation .nav-links .page-numbers:hover{
+    color: #fff !important;
+    border-bottom: 1px solid #C69C6D !important;
+    background: #C69C6D !important;
+}

@@ -1,0 +1,1215 @@
+<?php
+if ( class_exists( 'WP_Customize_Control' ) && ! class_exists( 'sharp_tian_GeneratePress_Upsell_Section' ) ) {
+
+	/**
+	 * Astra_Pro_Customizer Initial setup
+	 */
+	class sharp_tian_GeneratePress_Upsell_Section extends WP_Customize_Control {
+
+	/**
+	 * The control type.
+	 *
+	 * @access public
+	 * @var string
+	 */
+	public $type = 'sharp-tian-ast-description';
+	
+	/**
+         * Set ID.
+         *
+         * @var public $id
+         */
+        public $id = '';
+
+	/**
+	 * Refresh the parameters passed to the JavaScript via JSON.
+	 *
+	 * @see WP_Customize_Control::to_json()
+	 */
+	public function to_json() {
+		parent::to_json();		
+
+		$this->json['label']       = esc_html( $this->label );
+		$json['id'] = $this->id;
+            return $json;
+	}
+
+	/**
+	 * Render the control's content.
+	 *
+	 * @see WP_Customize_Control::render_content()
+	 */
+	protected function render_content() {
+		?>
+		<h3 class="section-heading">
+            <?php echo esc_html( $this->label ); ?>      
+        </h3>
+		<?php
+	}
+	}
+
+}
+if ( class_exists( 'WP_Customize_Control' ) && ! class_exists( 'sharp_tian_Custom_Radio_Image_Control' ) ) {
+	class sharp_tian_Custom_Radio_Image_Control extends WP_Customize_Control {
+	
+	/**
+	 * Declare the control type.
+	 *
+	 * @access public
+	 * @var string
+	 */
+	public $type = 'sharp-tian-radio-image';
+	
+	/**
+	 * Render the control to be displayed in the Customizer.
+	 */
+	public function render_content() {
+		if ( empty( $this->choices ) ) {
+			return;
+		}			
+		
+		$name = '_customize-radio-' . $this->id;
+		?>
+		<span class="customize-control-title">
+			<?php echo esc_html( $this->label ); ?>
+			<?php if ( ! empty( $this->description ) ) : ?>
+				<span class="description customize-control-description"><?php echo esc_html( $this->description ); ?></span>
+			<?php endif; ?>
+		</span>
+		<div id="input_<?php echo esc_attr( $this->id ); ?>" class="image">
+			<?php foreach ( $this->choices as $value => $label ) : ?>
+					<label for="<?php echo esc_attr( $this->id ) . esc_attr( $value ); ?>">
+						<input class="image-select" type="radio" value="<?php echo esc_attr( $value ); ?>" id="<?php echo esc_attr( $this->id ) . esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" <?php $this->link(); checked( $this->value(), $value ); ?>>
+						<img src="<?php echo esc_html( $label ); ?>" alt="<?php echo esc_attr( $value ); ?>" title="<?php echo esc_attr( $value ); ?>">
+						</input>
+					</label>
+			<?php endforeach; ?>
+		</div>
+		<?php
+	}
+}
+}
+if ( ! function_exists( 'sharp_tian_breadcrumb_title' ) ) {
+	function sharp_tian_breadcrumb_title() {
+		
+		if ( is_home() || is_front_page()):
+			
+			single_post_title();
+			
+		elseif ( is_day() ) : 
+										
+			printf( esc_html( 'Daily Archives: %s', 'experoner' ), get_the_date() );
+		
+		elseif ( is_month() ) :
+		
+			printf( esc_html( 'Monthly Archives: %s', 'experoner' ), (get_the_date( 'F Y' ) ));
+			
+		elseif ( is_year() ) :
+		
+			printf( esc_html( 'Yearly Archives: %s', 'experoner' ), (get_the_date( 'Y' ) ) );
+			
+		elseif ( is_category() ) :
+		
+			printf( esc_html( 'Category Archives: %s', 'experoner' ), (single_cat_title( '', false ) ));
+
+		elseif ( is_tag() ) :
+		
+			printf( esc_html( 'Tag Archives: %s', 'experoner' ), (single_tag_title( '', false ) ));
+			
+		elseif ( is_404() ) :
+
+			printf( esc_html( 'Error 404', 'experoner' ));
+			
+		elseif ( is_author() ) :
+		
+			printf( esc_html( 'Author: %s', 'experoner' ), (get_the_author( '', false ) ));			
+			
+		elseif ( class_exists( 'woocommerce' ) ) : 
+			
+			if ( is_shop() ) {
+				woocommerce_page_title();
+			}
+			
+			elseif ( is_cart() ) {
+				the_title();
+			}
+			
+			elseif ( is_checkout() ) {
+				the_title();
+			}
+			
+			else {
+				the_title();
+			}
+		else :
+				the_title();
+				
+		endif;
+	}
+}
+if ( ! function_exists( 'sharp_tian_breadcrumb_sections' ) ) :
+	function sharp_tian_breadcrumb_sections( $selector = 'header' ) {
+		get_template_part( 'template-parts/theme_option/breadcrumb' );
+	}
+endif;
+if ( ! function_exists( 'sharp_tian_featuredimage_slider' ) ) :
+	function sharp_tian_featuredimage_slider( $selector = 'header' ) {
+		get_template_part( 'template-parts/theme_option/featured_slider' );
+	}
+endif;
+if ( ! function_exists( 'sharp_tian_featured_section' ) ) :
+	function sharp_tian_featured_section( $selector = 'header' ) {
+		get_template_part( 'template-parts/theme_option/featured_section' );
+	}
+endif;
+if ( ! function_exists( 'sharp_tian_about_section' ) ) :
+	function sharp_tian_about_section( $selector = 'header' ) {
+		get_template_part( 'template-parts/theme_option/about_section' );
+	}
+endif;
+if ( ! function_exists( 'sharp_tian_our_portfolio_section' ) ) :
+	function sharp_tian_our_portfolio_section( $selector = 'header' ) {
+		get_template_part( 'template-parts/theme_option/our_portfolio' );
+	}
+endif;
+if ( ! function_exists( 'sharp_tian_our_team_section' ) ) :
+	function sharp_tian_our_team_section( $selector = 'header' ) {
+		get_template_part( 'template-parts/theme_option/our_team' );
+	}
+endif;
+if ( ! function_exists( 'sharp_tian_our_testimonial_section' ) ) :
+	function sharp_tian_our_testimonial_section( $selector = 'header' ) {
+		get_template_part( 'template-parts/theme_option/our_testimonial' );
+	}
+endif;
+if ( ! function_exists( 'sharp_tian_social_section' ) ) :
+	function sharp_tian_social_section( $selector = 'header' ) {
+		get_template_part( 'template-parts/social_info/social_secion' );
+	}
+endif;
+if ( ! function_exists( 'sharp_tian_our_sponsors_section' ) ) :
+	function sharp_tian_our_sponsors_section( $selector = 'header' ) {
+		get_template_part( 'template-parts/theme_option/our_sponsors' );
+	}
+endif;
+if ( ! function_exists( 'sharp_tian_widget_section' ) ) :
+	function sharp_tian_widget_section( $selector = 'header' ) {
+		get_template_part( 'template-parts/theme_option/widget_section' );
+	}
+endif;
+
+
+
+if ( class_exists( 'WP_Customize_Control' ) && ! class_exists( 'sharp_tian_custom_ordering' ) ) {
+
+class sharp_tian_custom_ordering extends WP_Customize_Control {
+/**
+* The type of control being rendered
+*/
+public $type = 'sharp_tian_sortable_repeater';
+/**
+* Enqueue our scripts and styles
+*/
+public function enqueue() {
+wp_enqueue_script( 'sharp_tian_custom_controls_js', trailingslashit( get_template_directory_uri() ) . 'assets/js/customizer-rep.js', array( 'jquery' ), '1.0', true );
+}
+/**
+* Render the control in the customizer
+*/
+public function render_content() {
+        ?>
+          <div class="drag_and_drop_control">
+                <?php if( !empty( $this->label ) ) { ?>
+                	<h3 class="section-heading">
+	                    <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+	                </h3>
+                <?php } ?>
+                <?php if( !empty( $this->description ) ) { ?>
+                    <span class="customize-control-description"><?php echo esc_html( $this->description ); ?></span>
+                <?php } ?>
+                <?php
+                $sharp_tian_diseble = get_theme_mod( 'sharp_tian_diseble' );
+				$sharp_tian_diseble_arr =  explode(",",$sharp_tian_diseble); 
+
+				$globalddd_ordering = get_theme_mod( 'globalddd_ordering');				
+				$globalddd_ordering_arr =  explode(",",$globalddd_ordering);
+
+                ?>
+                <ul class="sortable">
+                	<?php
+                	
+						$valuechoices = $this->choices;
+						foreach ($valuechoices as $key => $value) {
+							?>
+							<li class="repeater <?php echo (in_array($key, $sharp_tian_diseble_arr)?'invisibility':'');?>" value="<?php echo esc_attr($key)?>" id='<?php echo esc_attr($key)?>'>
+		                        <div class="repeater-input">
+		                        	<i class='dashicons dashicons-visibility visibility'></i>
+		                        	<i class='dashicons dashicons-menu'></i>
+		                        	<?php echo esc_attr($value); ?>
+		                        </div>
+		                    </li>
+							<?php
+						}	
+													
+					?>	
+                </div>
+ 
+            </div>
+        <?php
+        }
+}
+}
+if ( class_exists( 'WP_Customize_Section' ) && ! class_exists( 'sharp_tian_documentation_Upsell_Section' ) ) {
+    
+    class sharp_tian_documentation_Upsell_Section extends WP_Customize_Section {
+        
+        public $type = 'sharp-tian-gp-upsell-section';
+
+        public $pro_url = '';
+      
+        public $pro_text = '';
+       
+        public $id = '';
+
+        public function json() {
+            $json = parent::json();
+            $json['pro_text'] = $this->pro_text;
+            $json['pro_url']  = esc_url( $this->pro_url );
+            $json['id'] = $this->id;
+            return $json;
+        }
+        protected function render_template() {
+            ?>
+            <li id="accordion-section-{{ data.id }}" class="accordion-section control-section control-section-{{ data.type }} cannot-expand">
+
+                <!-- <h3 class="accordion-section-title"> -->
+                    {{ data.title }}
+
+                    <# if ( data.pro_text && data.pro_url ) { #>
+                    <a href="{{ data.pro_url }}" class="button button-secondary alignright button_pro" target="_blank">{{ data.pro_text }}</a>
+                    <# } #>
+                <!-- </h3> -->
+            </li>   
+            <?php
+        }
+    }
+}
+
+if ( class_exists( 'WP_Customize_Section' ) && ! class_exists( 'pro_section_custom_control' ) ) {
+    
+    class pro_section_custom_control extends WP_Customize_Section {
+        
+        public $type = 'sharp_tian_pro_section';
+
+        public $pro_url = '';
+      
+        public $pro_text = '';
+       
+        public $id = '';
+
+        public function json() {
+            $json = parent::json();
+            $json['pro_text'] = $this->pro_text;
+            $json['pro_url']  = esc_url( $this->pro_url );
+            $json['id'] = $this->id;
+            return $json;
+        }
+        protected function render_template() {
+            ?>
+            <li id="accordion-section-{{ data.id }}" class="accordion-section control-section control-section-{{ data.type }} cannot-expand">
+
+                    <# if ( data.pro_text && data.pro_url ) { #>
+                    <a href="{{ data.pro_url }}" class="button button-secondary alignright button_pro" target="_blank">{{ data.pro_text }}</a>
+                    <# } #>
+            </li>   
+            <?php
+        }
+    }
+}
+
+// drag and drop pro version
+
+if ( class_exists( 'WP_Customize_Control' ) && ! class_exists( 'drag_drop_option_Control' ) ) {
+	class drag_drop_option_Control extends WP_Customize_Control {
+	
+		public $r_s_type = 'sharp_tian_more_option';
+		
+	    public $id = '';
+		
+		public function json() {
+            $json = parent::json();
+            $this->json['label'] = esc_html( $this->label );
+            $json['id'] = $this->id;
+            return $json;
+        }
+		
+		protected function render_content() {
+			$theme_name = wp_get_theme();
+			$proverslink = apply_filters('sharp_tian_prosectionlinks', 'https://www.inverstheme.com/theme/sharp-tian-pro/');
+			?>
+			<div class="customize-upgrade-pro-message">
+				<h4 class="customize-control-title"><?php echo wp_kses_post( 'Drag & Drop Section in <a href="'.$proverslink.'" target="_blank" > '.$theme_name.' Pro </a> to be add more option ', 'sharp-tian');  esc_html_e( 'and get the other pro features.', 'sharp-tian') ?></h4>
+			</div>
+			<?php
+		}
+	}
+}
+
+
+if ( class_exists( 'WP_Customize_Control' ) && ! class_exists( 'sharp_tian_Custom_Radio_Control' ) ) {
+	class sharp_tian_Custom_Radio_Control extends WP_Customize_Control {
+	
+	
+	public $type = 'sharp-tian-radio-select';
+	
+	/**
+	 * Render the control to be displayed in the Customizer.
+	 */
+	public function render_content() {
+		if ( empty( $this->choices ) ) {
+			return;
+		}			
+		
+		$name = '_customize-radio-' . $this->id;
+
+		?>
+		<span class="customize-control-title">
+			<?php echo esc_html( $this->label ); ?>
+			<?php if ( ! empty( $this->description ) ) : ?>
+				<span class="description customize-control-description"><?php echo esc_html( $this->description ); ?></span>
+			<?php endif; ?>
+		</span>
+		<div id="input_<?php echo esc_attr( $this->id ); ?>" class="general_design_tab">
+			<?php foreach ( $this->choices as $value => $label ) : 
+				//print_r($label);
+				?>
+					<label for="<?php echo esc_attr( $this->id ) . esc_attr( $value ); ?>">
+						<input class="general-design-select" type="radio" value="<?php echo esc_attr( $value ); ?>" id="<?php echo esc_attr( $this->id ) . esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" <?php $this->link(); checked( $this->value(), $value ); ?>>
+						<h2><?php echo esc_html( $label ); ?></h2>
+					</label>
+			<?php endforeach; ?>
+		</div>
+		<?php
+	}
+}
+}
+if ( class_exists( 'WP_Customize_Control' ) && ! class_exists( 'WP_Customize_Transparent_Color_Control' ) ) {
+	
+
+
+	class WP_Customize_Transparent_Color_Control extends WP_Customize_Control {
+
+	
+	public $type = 'sharp-tian-alpha-color';
+
+	
+	public $palette;
+
+	
+	public $show_opacity;
+
+	
+	public function enqueue() {
+		wp_enqueue_script( 'sharp_tian_custom_controls_js', trailingslashit( get_template_directory_uri() ) . 'assets/js/customizer-rep.js', array( 'jquery' ), '1.0', true );
+	}
+
+	
+	public function render_content() {
+
+		// Process the palette
+		if ( is_array( $this->palette ) ) {
+			$palette = implode( '|', $this->palette );
+		} else {
+			// Default to true.
+			$palette = ( false === $this->palette || 'false' === $this->palette ) ? 'false' : 'true';
+		}
+
+		// Support passing show_opacity as string or boolean. Default to true.
+		$show_opacity = ( false === $this->show_opacity || 'false' === $this->show_opacity ) ? 'false' : 'true';
+
+		// Begin the output. ?>
+		<label>
+			<?php // Output the label and description if they were passed in.
+			if ( isset( $this->label ) && '' !== $this->label ) {
+				echo '<span class="customize-control-title">' . sanitize_text_field( $this->label ) . '</span>';
+			}
+			if ( isset( $this->description ) && '' !== $this->description ) {
+				echo '<span class="description customize-control-description">' . sanitize_text_field( $this->description ) . '</span>';
+			} ?>
+			<input class="alpha-color-picker" type="text" data-show-opacity="<?php echo $show_opacity; ?>" data-palette="<?php echo esc_attr( $palette ); ?>" data-default-color="<?php echo esc_attr( $this->settings['default']->default ); ?>" <?php $this->link(); ?>  />
+		</label>
+		<?php
+	}
+}
+}
+
+if ( class_exists( 'WP_Customize_Control' ) && ! class_exists( 'sharp_tian_Customize_Transparent_Color_Control' ) ) {
+
+	class sharp_tian_Customize_Transparent_Color_Control extends WP_Customize_Control {
+	
+		public $type = 'sharp_tian_alpha_color';		
+		public function render_content() {
+			?>
+			<span class='customize-control-title'><?php echo esc_html($this->label); ?></span>
+			<label>
+				<input type="text" class="color-picker" data-alpha="true" data-default-color="<?php echo esc_attr( $this->settings['default']->default ); ?>" value="<?php echo esc_attr( $this->settings['default']->default ); ?>" <?php $this->link(); ?> /> 
+			</label>
+			<?php
+		}
+	}
+}
+
+if ( class_exists( 'WP_Customize_Control' ) && ! class_exists( 'Custom_Radio_Control' ) ) {
+	class Custom_Radio_Control extends WP_Customize_Control {
+	
+		public $type = 'sharp-tian-radio-select';
+		
+		public function render_content() {
+			if ( empty( $this->choices ) ) {
+				return;
+			}			
+			
+			$name = '_customize-radio-' . $this->id;
+
+			?>
+			<span class="customize-control-title">
+				<?php echo esc_html( $this->label ); ?>
+				<?php if ( ! empty( $this->description ) ) : ?>
+					<span class="description customize-control-description"><?php echo esc_html( $this->description ); ?></span>
+				<?php endif; ?>
+			</span>
+			<div id="input_<?php echo esc_attr( $this->id ); ?>" class="general_design_tab">
+				<?php foreach ( $this->choices as $value => $label ) : 
+					?>
+						<label for="<?php echo esc_attr( $this->id ) . esc_attr( $value ); ?>">
+							<input class="general-design-select" type="radio" value="<?php echo esc_attr( $value ); ?>" id="<?php echo esc_attr( $this->id ) . esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" <?php $this->link(); checked( $this->value(), $value ); ?>>
+							<h2><?php echo esc_html( $label ); ?></h2>
+						</label>
+				<?php endforeach; ?>
+			</div>
+			<?php
+		}
+	}
+}
+
+
+if ( ! class_exists( 'WP_Customize_Control' ) ) {
+	return null;
+}
+
+class Customizer_Repeaterss extends WP_Customize_Control {
+
+	public $id;
+	private $boxtitle = array();
+	private $add_field_label = array();
+	private $customizer_icon_container = '';
+	private $allowed_html = array();
+	private $customizer_repeater_image_control = false;
+	public $customizer_repeater_icon_control = false;
+	public $customizer_repeater_color_control = false;
+	public $customizer_repeater_color2_control = false;
+	public $customizer_repeater_title_control = false;
+	public $customizer_repeater_subtitle_control = false;
+	private $customizer_repeater_button_text_control = false;
+	public $customizer_repeater_text_control = false;
+	public $customizer_repeater_link_control = false;
+	public $customizer_repeater_text2_control = false;
+	public $customizer_repeater_link2_control = false;
+	public $customizer_repeater_twitter_control = false;
+	public $customizer_repeater_facebook_control = false;
+	public $customizer_repeater_instagram_control = false;
+	public $customizer_repeater_linkedin_control = false;
+	public $customizer_repeater_shortcode_control = false;
+	public $customizer_repeater_repeater_control = false;
+
+
+
+	/*Class constructor*/
+	public function __construct( $manager, $id, $args = array() ) {
+		parent::__construct( $manager, $id, $args );
+		/*Get options from customizer.php*/
+		$this->add_field_label = esc_html__( 'Add new field', 'sharp-tian' );
+		if ( ! empty( $args['add_field_label'] ) ) {
+			$this->add_field_label = $args['add_field_label'];
+		}
+
+		$this->boxtitle = esc_html__( 'Customizer Repeater', 'sharp-tian' );
+		if ( ! empty ( $args['item_name'] ) ) {
+			$this->boxtitle = $args['item_name'];
+		} elseif ( ! empty( $this->label ) ) {
+			$this->boxtitle = $this->label;
+		}
+
+		if ( ! empty( $args['customizer_repeater_image_control'] ) ) {
+			$this->customizer_repeater_image_control = $args['customizer_repeater_image_control'];
+		}
+
+		if ( ! empty( $args['customizer_repeater_icon_control'] ) ) {
+			$this->customizer_repeater_icon_control = $args['customizer_repeater_icon_control'];
+		}
+
+		if ( ! empty( $args['customizer_repeater_color_control'] ) ) {
+			$this->customizer_repeater_color_control = $args['customizer_repeater_color_control'];
+		}
+
+		if ( ! empty( $args['customizer_repeater_color2_control'] ) ) {
+			$this->customizer_repeater_color2_control = $args['customizer_repeater_color2_control'];
+		}
+
+		if ( ! empty( $args['customizer_repeater_title_control'] ) ) {
+			$this->customizer_repeater_title_control = $args['customizer_repeater_title_control'];
+		}
+
+		if ( ! empty( $args['customizer_repeater_subtitle_control'] ) ) {
+			$this->customizer_repeater_subtitle_control = $args['customizer_repeater_subtitle_control'];
+		}
+
+		if ( ! empty( $args['customizer_repeater_text_control'] ) ) {
+			$this->customizer_repeater_text_control = $args['customizer_repeater_text_control'];
+		}
+
+		if ( ! empty( $args['customizer_repeater_link_control'] ) ) {
+			$this->customizer_repeater_link_control = $args['customizer_repeater_link_control'];
+		}
+
+		if ( ! empty( $args['customizer_repeater_text2_control'] ) ) {
+			$this->customizer_repeater_text2_control = $args['customizer_repeater_text2_control'];
+		}
+
+		if ( ! empty( $args['customizer_repeater_link2_control'] ) ) {
+			$this->customizer_repeater_link2_control = $args['customizer_repeater_link2_control'];
+		}
+
+		if ( ! empty( $args['customizer_repeater_twitter_control'] ) ) {
+			$this->customizer_repeater_twitter_control = $args['customizer_repeater_twitter_control'];
+		}
+
+		if ( ! empty( $args['customizer_repeater_facebook_control'] ) ) {
+			$this->customizer_repeater_facebook_control = $args['customizer_repeater_facebook_control'];
+		}
+
+		if ( ! empty( $args['customizer_repeater_linkedin_control'] ) ) {
+			$this->customizer_repeater_linkedin_control = $args['customizer_repeater_linkedin_control'];
+		}
+
+		if ( ! empty( $args['customizer_repeater_twitter_control'] ) ) {
+			$this->customizer_repeater_twitter_control = $args['customizer_repeater_twitter_control'];
+		}
+
+		if ( ! empty( $args['customizer_repeater_button_text_control'] ) ) {
+			$this->customizer_repeater_button_text_control = $args['customizer_repeater_button_text_control'];
+		}
+
+		if ( ! empty( $args['customizer_repeater_shortcode_control'] ) ) {
+			$this->customizer_repeater_shortcode_control = $args['customizer_repeater_shortcode_control'];
+		}
+
+		if ( ! empty( $args['customizer_repeater_repeater_control'] ) ) {
+			$this->customizer_repeater_repeater_control = $args['customizer_repeater_repeater_control'];
+		}
+
+		if ( ! empty( $id ) ) {
+			$this->id = $id;
+		}
+		if ( file_exists( get_template_directory() . '/inc/customizer-repeater/inc/icons.php' ) ) {
+			$this->customizer_icon_container =  'inc/customizer-repeater/inc/icons';
+		}
+
+		$allowed_array1 = wp_kses_allowed_html( 'post' );
+		$allowed_array2 = array(
+			'input' => array(
+				'type'        => array(),
+				'class'       => array(),
+				'placeholder' => array()
+			)
+		);
+
+		$this->allowed_html = array_merge( $allowed_array1, $allowed_array2 );
+	}
+
+	/*Enqueue resources for the control*/
+	public function enqueue() {
+		wp_enqueue_style( 'sharp-tian-font-awesome', get_template_directory_uri() . '/assets/fontawesome/css/font-awesome.min.css', array(), 999 );		
+
+		wp_enqueue_style( 'sharp-tian-customizer-repeater-admin-stylesheet', get_template_directory_uri() . '/inc/customizer-repeater/css/admin-style.css', array(), 999 );
+
+		wp_enqueue_style( 'wp-color-picker' );
+
+		wp_enqueue_script( 'sharp-tian-customizer-repeater-script', get_template_directory_uri() . '/inc/customizer-repeater/js/customizer_repeater.js', array('jquery', 'jquery-ui-draggable', 'wp-color-picker' ), 999, true  );
+
+		wp_enqueue_script( 'sharp-tian-customizer-repeater-fontawesome-iconpicker', get_template_directory_uri() . '/inc/customizer-repeater/js/fontawesome-iconpicker.js', array( 'jquery' ), 999, true );
+
+		wp_enqueue_style( 'sharp-tian-customizer-repeater-fontawesome-iconpicker-script', get_template_directory_uri() . '/inc/customizer-repeater/css/fontawesome-iconpicker.min.css', array(), 999 );
+	}
+
+	public function render_content() {
+
+		/*Get default options*/
+		$this_default = json_decode( $this->setting->default );
+
+		/*Get values (json format)*/
+		$values = $this->value();
+
+		/*Decode values*/
+		$json = json_decode( $values );
+
+		if ( ! is_array( $json ) ) {
+			$json = array( $values );
+		} ?>
+
+        <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+        <div class="customizer-repeater-general-control-repeater customizer-repeater-general-control-droppable">
+			<?php
+			if ( ( count( $json ) == 1 && '' === $json[0] ) || empty( $json ) ) {
+				if ( ! empty( $this_default ) ) {
+					$this->iterate_array( $this_default ); ?>
+                    <input type="hidden"
+                           id="customizer-repeater-<?php echo esc_attr( $this->id ); ?>-colector" <?php esc_attr( $this->link() ); ?>
+                           class="customizer-repeater-colector"
+                           value="<?php echo esc_textarea( json_encode( $this_default ) ); ?>"/>
+					<?php
+				} else {
+					$this->iterate_array(); ?>
+                    <input type="hidden"
+                           id="customizer-repeater-<?php echo esc_attr( $this->id ); ?>-colector" <?php esc_attr( $this->link() ); ?>
+                           class="customizer-repeater-colector"/>
+					<?php
+				}
+			} else {
+				$this->iterate_array( $json ); ?>
+                <input type="hidden" id="customizer-repeater-<?php echo esc_attr( $this->id ); ?>-colector" <?php esc_attr( $this->link() ); ?>
+                       class="customizer-repeater-colector" value="<?php echo esc_textarea( $this->value() ); ?>"/>
+				<?php
+			} ?>
+        </div>
+        <button type="button" class="button add_field customizer-repeater-new-field">
+			<?php echo esc_html( $this->add_field_label ); ?>
+        </button>
+		<?php
+	}
+
+	private function iterate_array($array = array()){
+		/*Counter that helps checking if the box is first and should have the delete button disabled*/
+		$it = 0;
+		if(!empty($array)){
+			foreach($array as $icon){ ?>
+                <div class="customizer-repeater-general-control-repeater-container customizer-repeater-draggable">
+                    <div class="customizer-repeater-customize-control-title">
+						<?php echo esc_html( $this->boxtitle ) ?>
+                    </div>
+                    <div class="customizer-repeater-box-content-hidden">
+						<?php
+						$choice = $image_url = $icon_value = $title = $subtitle = $text = $text2  = $link2 = $twitter = $facebook = $instagram = $linkedin = $link = $button = $shortcode = $repeater = $color = $color2 = '';
+						if(!empty($icon->id)){
+							$id = $icon->id;
+						}
+						if(!empty($icon->choice)){
+							$choice = $icon->choice;
+						}
+						if(!empty($icon->image_url)){
+							$image_url = $icon->image_url;
+						}
+						if(!empty($icon->icon_value)){
+							$icon_value = $icon->icon_value;
+						}
+						if(!empty($icon->color)){
+							$color = $icon->color;
+						}
+						if(!empty($icon->color2)){
+							$color2 = $icon->color2;
+						}
+						if(!empty($icon->title)){
+							$title = $icon->title;
+						}
+						if(!empty($icon->subtitle)){
+							$subtitle =  $icon->subtitle;
+						}
+						if(!empty($icon->text)){
+							$text = $icon->text;
+						}
+						if(!empty($icon->link)){
+							$link = $icon->link;
+						}
+						if(!empty($icon->button_text)){
+							$button = $icon->button_text;
+						}
+						if(!empty($icon->text2)){
+							$text2 = $icon->text2;
+						}
+						if(!empty($icon->link2)){
+							$link2 = $icon->link2;
+						}
+						if(!empty($icon->$twitter)){
+							$twitter = $icon->$twitter;
+						}
+						if(!empty($icon->$facebook)){
+							$facebook = $icon->$facebook;
+						}
+						if(!empty($icon->$instagram)){
+							$instagram = $icon->$instagram;
+						}
+						if(!empty($icon->$linkedin)){
+							$linkedin = $icon->$linkedin;
+						}
+						if(!empty($icon->shortcode)){
+							$shortcode = $icon->shortcode;
+						}
+
+						if(!empty($icon->social_repeater)){
+							$repeater = $icon->social_repeater;
+						}
+
+						if($this->customizer_repeater_image_control == true && $this->customizer_repeater_icon_control == true) {
+							$this->icon_type_choice( $choice );
+						}
+						if($this->customizer_repeater_image_control == true){
+							$this->image_control($image_url, $choice);
+						}
+						if($this->customizer_repeater_icon_control == true){
+							$this->icon_picker_control($icon_value, $choice);
+						}
+						if($this->customizer_repeater_color_control == true){
+							$this->input_control(array(
+								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Color','sharp-tian' ), $this->id, 'customizer_repeater_color_control' ),
+								'class' => 'customizer-repeater-color-control',
+								'type'  => apply_filters('customizer_repeater_input_types_filter', 'color', $this->id, 'customizer_repeater_color_control' ),
+								'sanitize_callback' => 'sanitize_hex_color',
+								'choice' => $choice,
+							), $color);
+						}
+						if($this->customizer_repeater_color2_control == true){
+							$this->input_control(array(
+								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Color','sharp-tian' ), $this->id, 'customizer_repeater_color2_control' ),
+								'class' => 'customizer-repeater-color2-control',
+								'type'  => apply_filters('customizer_repeater_input_types_filter', 'color', $this->id, 'customizer_repeater_color2_control' ),
+								'sanitize_callback' => 'sanitize_hex_color'
+							), $color2);
+						}
+						if($this->customizer_repeater_title_control==true){
+							$this->input_control(array(
+								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Title','sharp-tian' ), $this->id, 'customizer_repeater_title_control' ),
+								'class' => 'customizer-repeater-title-control',
+								'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_title_control' ),
+							), $title);
+						}
+						if($this->customizer_repeater_subtitle_control==true){
+							$this->input_control(array(
+								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Subtitle','sharp-tian' ), $this->id, 'customizer_repeater_subtitle_control' ),
+								'class' => 'customizer-repeater-subtitle-control',
+								'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_subtitle_control' ),
+							), $subtitle);
+						}
+						if($this->customizer_repeater_text_control==true){
+							$this->input_control(array(
+								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Text','sharp-tian' ), $this->id, 'customizer_repeater_text_control' ),
+								'class' => 'customizer-repeater-text-control',
+								'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_text_control' ),
+							), $text);
+						}
+						if($this->customizer_repeater_link_control){
+							$this->input_control(array(
+								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Link','sharp-tian' ), $this->id, 'customizer_repeater_link_control' ),
+								'class' => 'customizer-repeater-link-control',
+								'sanitize_callback' => 'esc_url_raw',
+								'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_link_control' ),
+							), $link);
+						}
+						if($this->customizer_repeater_text2_control==true){
+							$this->input_control(array(
+								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Button Text','sharp-tian' ), $this->id, 'customizer_repeater_text2_control' ),
+								'class' => 'customizer-repeater-text2-control',
+								'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_text2_control' ),
+							), $text2);
+						}
+						if($this->customizer_repeater_link2_control){
+							$this->input_control(array(
+								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Link','sharp-tian' ), $this->id, 'customizer_repeater_link2_control' ),
+								'class' => 'customizer-repeater-link2-control',
+								'sanitize_callback' => 'esc_url_raw',
+								'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_link2_control' ),
+							), $link2);
+						}
+						if($this->customizer_repeater_twitter_control){
+							$this->input_control(array(
+								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Twitter Link','sharp-tian' ), $this->id, 'customizer_repeater_twitter_control' ),
+								'class' => 'customizer-repeater-twitter-control',
+								'sanitize_callback' => 'esc_url_raw',
+								'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_twitter_control' ),
+							), $twitter);
+						}
+						if($this->customizer_repeater_facebook_control){
+							$this->input_control(array(
+								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Facebook Link','sharp-tian' ), $this->id, 'customizer_repeater_facebook_control' ),
+								'class' => 'customizer-repeater-facebook-control',
+								'sanitize_callback' => 'esc_url_raw',
+								'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_facebook_control' ),
+							), $facebook);
+						}
+						if($this->customizer_repeater_instagram_control){
+							$this->input_control(array(
+								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Instagram Link','sharp-tian' ), $this->id, 'customizer_repeater_instagram_control' ),
+								'class' => 'customizer-repeater-instagram-control',
+								'sanitize_callback' => 'esc_url_raw',
+								'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_instagram_control' ),
+							), $instagram);
+						}
+						if($this->customizer_repeater_linkedin_control){
+							$this->input_control(array(
+								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Linkedin Link','sharp-tian' ), $this->id, 'customizer_repeater_linkedin_control' ),
+								'class' => 'customizer-repeater-linkedin-control',
+								'sanitize_callback' => 'esc_url_raw',
+								'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_linkedin_control' ),
+							), $linkedin);
+						}
+						if($this->customizer_repeater_shortcode_control==true){
+							$this->input_control(array(
+								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Shortcode','sharp-tian' ), $this->id, 'customizer_repeater_shortcode_control' ),
+								'class' => 'customizer-repeater-shortcode-control',
+								'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_shortcode_control' ),
+							), $shortcode);
+						}
+						if($this->customizer_repeater_repeater_control==true){
+							$this->repeater_control($repeater);
+						} ?>
+
+                        <input type="hidden" class="social-repeater-box-id" value="<?php if ( ! empty( $id ) ) {
+							echo esc_attr( $id );
+						} ?>">
+                        <button type="button" class="social-repeater-general-control-remove-field" <?php if ( $it == 0 ) {
+							echo 'style="display:none;"';
+						} ?>>
+							<?php esc_html_e( 'Delete field', 'sharp-tian' ); ?>
+                        </button>
+
+                    </div>
+                </div>
+
+				<?php
+				$it++;
+			}
+		} else { ?>
+            <div class="customizer-repeater-general-control-repeater-container">
+                <div class="customizer-repeater-customize-control-title">
+					<?php echo esc_html( $this->boxtitle ) ?>
+                </div>
+                <div class="customizer-repeater-box-content-hidden">
+					<?php
+					if ( $this->customizer_repeater_image_control == true && $this->customizer_repeater_icon_control == true ) {
+						$this->icon_type_choice();
+					}
+					if ( $this->customizer_repeater_image_control == true ) {
+						$this->image_control();
+					}
+					if ( $this->customizer_repeater_icon_control == true ) {
+						$this->icon_picker_control();
+					}
+					if($this->customizer_repeater_color_control==true){
+						$this->input_control(array(
+							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Color','sharp-tian' ), $this->id, 'customizer_repeater_color_control' ),
+							'class' => 'customizer-repeater-color-control',
+							'type'  => apply_filters('customizer_repeater_input_types_filter', 'color', $this->id, 'customizer_repeater_color_control' ),
+							'sanitize_callback' => 'sanitize_hex_color'
+						) );
+					}
+					if($this->customizer_repeater_color2_control==true){
+						$this->input_control(array(
+							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Color','sharp-tian' ), $this->id, 'customizer_repeater_color2_control' ),
+							'class' => 'customizer-repeater-color2-control',
+							'type'  => apply_filters('customizer_repeater_input_types_filter', 'color', $this->id, 'customizer_repeater_color2_control' ),
+							'sanitize_callback' => 'sanitize_hex_color'
+						) );
+					}
+					if ( $this->customizer_repeater_title_control == true ) {
+						$this->input_control( array(
+							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Title','sharp-tian' ), $this->id, 'customizer_repeater_title_control' ),
+							'class' => 'customizer-repeater-title-control',
+							'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_title_control' ),
+						) );
+					}
+					if ( $this->customizer_repeater_subtitle_control == true ) {
+						$this->input_control( array(
+							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Subtitle','sharp-tian' ), $this->id, 'customizer_repeater_subtitle_control' ),
+							'class' => 'customizer-repeater-subtitle-control',
+							'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_subtitle_control' ),
+						) );
+					}
+					if ( $this->customizer_repeater_text_control == true ) {
+						$this->input_control( array(
+							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Text','sharp-tian' ), $this->id, 'customizer_repeater_text_control' ),
+							'class' => 'customizer-repeater-text-control',
+							'type'  => apply_filters('customizer_repeater_input_types_filter', 'textarea', $this->id, 'customizer_repeater_text_control' ),
+						) );
+					}
+					if ( $this->customizer_repeater_link_control == true ) {
+						$this->input_control( array(
+							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Link','sharp-tian' ), $this->id, 'customizer_repeater_link_control' ),
+							'class' => 'customizer-repeater-link-control',
+							'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_link_control' ),
+						) );
+					}
+					if ( $this->customizer_repeater_text2_control == true ) {
+						$this->input_control( array(
+							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Button Text','sharp-tian' ), $this->id, 'customizer_repeater_text2_control' ),
+							'class' => 'customizer-repeater-text2-control',
+							'type'  => apply_filters('customizer_repeater_input_types_filter', 'textarea', $this->id, 'customizer_repeater_text2_control' ),
+						) );
+					}
+					if ( $this->customizer_repeater_link2_control == true ) {
+						$this->input_control( array(
+							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Link','sharp-tian' ), $this->id, 'customizer_repeater_link2_control' ),
+							'class' => 'customizer-repeater-link2-control',
+							'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_link2_control' ),
+						) );
+					}
+					if ( $this->customizer_repeater_twitter_control == true ) {
+						$this->input_control( array(
+							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Twitter Link','sharp-tian' ), $this->id, 'customizer_repeater_twitter_control' ),
+							'class' => 'customizer-repeater-twitter-control',
+							'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_twitter_control' ),
+						) );
+					}
+					if($this->customizer_repeater_facebook_control){
+						$this->input_control(array(
+							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Facebook Link','sharp-tian' ), $this->id, 'customizer_repeater_facebook_control' ),
+							'class' => 'customizer-repeater-facebook-control',
+							'sanitize_callback' => 'esc_url_raw',
+							'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_facebook_control' ),
+						));
+					}
+					if($this->customizer_repeater_instagram_control){
+						$this->input_control(array(
+							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Instagram Link','sharp-tian' ), $this->id, 'customizer_repeater_instagram_control' ),
+							'class' => 'customizer-repeater-instagram-control',
+							'sanitize_callback' => 'esc_url_raw',
+							'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_instagram_control' ),
+						));
+					}
+					if($this->customizer_repeater_linkedin_control){
+						$this->input_control(array(
+							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Linkedin Link','sharp-tian' ), $this->id, 'customizer_repeater_linkedin_control' ),
+							'class' => 'customizer-repeater-linkedin-control',
+							'sanitize_callback' => 'esc_url_raw',
+							'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_linkedin_control' ),
+						));
+					}
+					if ( $this->customizer_repeater_shortcode_control == true ) {
+						$this->input_control( array(
+							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Shortcode','sharp-tian' ), $this->id, 'customizer_repeater_shortcode_control' ),
+							'class' => 'customizer-repeater-shortcode-control',
+							'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_shortcode_control' ),
+						) );
+					}
+					if($this->customizer_repeater_repeater_control==true){
+						$this->repeater_control();
+					} ?>
+                    <input type="hidden" class="social-repeater-box-id">
+                    <button type="button" class="social-repeater-general-control-remove-field button" style="display:none;">
+						<?php esc_html_e( 'Delete field', 'sharp-tian' ); ?>
+                    </button>
+                </div>
+            </div>
+			<?php
+		}
+	}
+
+	private function input_control( $options, $value='' ){ ?>
+
+		<?php
+		if( !empty($options['type']) ){
+			switch ($options['type']) {
+				case 'textarea':?>
+                    <span class="customize-control-title"><?php echo esc_html( $options['label'] ); ?></span>
+                    <textarea class="<?php echo esc_attr( $options['class'] ); ?>" placeholder="<?php echo esc_attr( $options['label'] ); ?>"><?php echo ( !empty($options['sanitize_callback']) ?  call_user_func_array( $options['sanitize_callback'], array( $value ) ) : esc_attr($value) ); ?></textarea>
+					<?php
+					break;
+				case 'color':
+					$style_to_add = '';
+					if( $options['choice'] !== 'customizer_repeater_icon' ){
+						$style_to_add = 'display:none';
+					}?>
+                    <span class="customize-control-title" <?php if( !empty( $style_to_add ) ) { echo 'style="'.esc_attr( $style_to_add ).'"';} ?>><?php echo esc_html( $options['label'] ); ?></span>
+                    <div class="<?php echo esc_attr($options['class']); ?>" <?php if( !empty( $style_to_add ) ) { echo 'style="'.esc_attr( $style_to_add ).'"';} ?>>
+                        <input type="text" value="<?php echo ( !empty($options['sanitize_callback']) ?  call_user_func_array( $options['sanitize_callback'], array( $value ) ) : esc_attr($value) ); ?>" class="<?php echo esc_attr($options['class']); ?>" />
+                    </div>
+					<?php
+					break;
+			}
+		} else { ?>
+            <span class="customize-control-title"><?php echo esc_html( $options['label'] ); ?></span>
+            <input type="text" value="<?php echo ( !empty($options['sanitize_callback']) ?  call_user_func_array( $options['sanitize_callback'], array( $value ) ) : esc_attr($value) ); ?>" class="<?php echo esc_attr($options['class']); ?>" placeholder="<?php echo esc_attr( $options['label'] ); ?>"/>
+			<?php
+		}
+	}
+
+	private function icon_picker_control($value = '', $show = ''){
+		?>
+        <div class="social-repeater-general-control-icon" <?php if( $show === 'customizer_repeater_image' || $show === 'customizer_repeater_none' ) { echo 'style="display:none;"'; } ?>>
+            <span class="customize-control-title">
+                <?php esc_html_e('Icon','sharp-tian'); ?>
+            </span>
+            <span class="description customize-control-description">
+                <?php
+                echo sprintf(
+	                esc_html__( 'Note: Some icons may not be displayed here. You can see the full list of icons at %1$s.', 'sharp-tian' ),
+	                sprintf( '<a href="http://fontawesome.io/icons/" rel="nofollow">%s</a>', esc_html__( 'http://fontawesome.io/icons/', 'sharp-tian' ) )
+                ); ?>
+            </span>
+            <div class="input-group icp-container">
+                <input data-placement="bottomRight" class="icp icp-auto" value="<?php if(!empty($value)) { echo esc_attr( $value );} ?>" type="text">
+                <span class="input-group-addon">
+                    <i class="fa <?php echo esc_attr($value); ?>"></i>
+                </span>
+            </div>
+            <?php //require get_template_directory() . '/inc/customizer-repeater/inc/icons.php';?>
+			<?php get_template_part( $this->customizer_icon_container ); ?> 
+        </div>
+		<?php
+	}
+
+	private function image_control($value = '', $show = ''){ ?>
+        <div class="customizer-repeater-image-control" <?php if( $show === 'customizer_repeater_icon' || $show === 'customizer_repeater_none' ) { echo 'style="display:none;"'; } ?>>
+            <span class="customize-control-title">
+                <?php esc_html_e('Image','sharp-tian')?>
+            </span>
+            <input type="text" class="widefat custom-media-url" value="<?php echo esc_attr( $value ); ?>">
+            <input type="button" class="button button-secondary customizer-repeater-custom-media-button" value="<?php esc_attr_e( 'Upload Image','sharp-tian' ); ?>" />
+        </div>
+		<?php
+	}
+
+	private function icon_type_choice($value='customizer_repeater_icon'){ ?>
+        <span class="customize-control-title">
+            <?php esc_html_e('Image type','sharp-tian');?>
+        </span>
+        <select class="customizer-repeater-image-choice">
+            <option value="customizer_repeater_icon" <?php selected($value,'customizer_repeater_icon');?>><?php esc_html_e('Icon','sharp-tian'); ?></option>
+            <option value="customizer_repeater_image" <?php selected($value,'customizer_repeater_image');?>><?php esc_html_e('Image','sharp-tian'); ?></option>
+            <option value="customizer_repeater_none" <?php selected($value,'customizer_repeater_none');?>><?php esc_html_e('None','sharp-tian'); ?></option>
+        </select>
+		<?php
+	}
+
+	private function repeater_control($value = ''){
+		$social_repeater = array();
+		$show_del        = 0; ?>
+        <span class="customize-control-title"><?php esc_html_e( 'Social icons', 'sharp-tian' ); ?></span>
+		<?php
+		echo '<span class="description customize-control-description">';
+		echo sprintf(
+			esc_html__( 'Note: Some icons may not be displayed here. You can see the full list of icons at %1$s.', 'sharp-tian' ),
+			sprintf( '<a href="http://fontawesome.io/icons/" rel="nofollow">%s</a>', esc_html__( 'http://fontawesome.io/icons/', 'sharp-tian' ) )
+		);
+		echo '</span>';
+		if(!empty($value)) {
+			$social_repeater = json_decode( html_entity_decode( $value ), true );
+		}
+		if ( ( count( $social_repeater ) == 1 && '' === $social_repeater[0] ) || empty( $social_repeater ) ) { ?>
+            <div class="customizer-repeater-social-repeater">
+                <div class="customizer-repeater-social-repeater-container">
+                    <div class="customizer-repeater-rc input-group icp-container">
+                        <input data-placement="bottomRight" class="icp icp-auto" value="<?php if(!empty($value)) { echo esc_attr( $value ); } ?>" type="text">
+                        <span class="input-group-addon"></span>
+                    </div>
+                    <?php //require get_template_directory() . '/inc/customizer-repeater/inc/icons.php'; ?>
+					<?php get_template_part( $this->customizer_icon_container ); ?> 
+                    <input type="text" class="customizer-repeater-social-repeater-link"
+                           placeholder="<?php esc_attr_e( 'Link', 'sharp-tian' ); ?>">
+                    <input type="hidden" class="customizer-repeater-social-repeater-id" value="">
+                    <button class="social-repeater-remove-social-item" style="display:none">
+						<?php esc_html_e( 'Remove Icon', 'sharp-tian' ); ?>
+                    </button>
+                </div>
+                <input type="hidden" id="social-repeater-socials-repeater-colector" class="social-repeater-socials-repeater-colector" value=""/>
+            </div>
+            <button class="social-repeater-add-social-item button-secondary"><?php esc_html_e( 'Add Icon', 'sharp-tian' ); ?></button>
+			<?php
+		} else { ?>
+            <div class="customizer-repeater-social-repeater">
+				<?php
+				foreach ( $social_repeater as $social_icon ) {
+					$show_del ++; ?>
+                    <div class="customizer-repeater-social-repeater-container">
+                        <div class="customizer-repeater-rc input-group icp-container">
+                            <input data-placement="bottomRight" class="icp icp-auto" value="<?php if( !empty($social_icon['icon']) ) { echo esc_attr( $social_icon['icon'] ); } ?>" type="text">
+                            <span class="input-group-addon"><i class="fa <?php echo esc_attr( $social_icon['icon'] ); ?>"></i></span>
+                        </div>
+                        <?php //require get_template_directory() . '/inc/customizer-repeater/inc/icons.php';?>
+						<?php get_template_part( $this->customizer_icon_container ); ?> 
+                        <input type="text" class="customizer-repeater-social-repeater-link"
+                               placeholder="<?php esc_attr_e( 'Link', 'sharp-tian' ); ?>"
+                               value="<?php if ( ! empty( $social_icon['link'] ) ) {
+							       echo esc_url( $social_icon['link'] );
+						       } ?>">
+                        <input type="hidden" class="customizer-repeater-social-repeater-id"
+                               value="<?php if ( ! empty( $social_icon['id'] ) ) {
+							       echo esc_attr( $social_icon['id'] );
+						       } ?>">
+                        <button class="social-repeater-remove-social-item"
+                                style="<?php if ( $show_del == 1 ) {
+							        echo "display:none";
+						        } ?>"><?php esc_html_e( 'Remove Icon', 'sharp-tian' ); ?></button>
+                    </div>
+					<?php
+				} ?>
+                <input type="hidden" id="social-repeater-socials-repeater-colector"
+                       class="social-repeater-socials-repeater-colector"
+                       value="<?php echo esc_textarea( html_entity_decode( $value ) ); ?>" />
+            </div>
+            <button class="social-repeater-add-social-item button-secondary"><?php esc_html_e( 'Add Icon', 'sharp-tian' ); ?></button>
+			<?php
+		}
+	}
+}
+if ( class_exists( 'WP_Customize_Control' ) && ! class_exists( 'Custom_GeneratePress_Upsell_Section' ) ) {
+
+	class Custom_GeneratePress_Upsell_Section extends WP_Customize_Control {
+
+		public $type = 'sharp-tian-ast-description';		
+	    public $id = '';
+		public function to_json() {
+			parent::to_json();		
+			$this->json['label'] = esc_html( $this->label );
+			$json['id'] = $this->id;
+	            return $json;
+		}
+
+		protected function render_content() {
+			?>
+			<h3 class="section-heading">
+	            <?php echo esc_html( $this->label ); ?>      
+	        </h3>
+			<?php
+		}
+	}
+}
+
+
+if ( class_exists( 'WP_Customize_Control' ) && ! class_exists( 'Customize_Upgrade_Control' ) ) {
+	class Customize_Upgrade_Control extends WP_Customize_Control {
+	
+		public $r_s_type = 'customizer-repeater';
+		
+	    public $id = '';
+
+		public function json() {
+	            $json = parent::json();
+	            $this->json['label']       = esc_html( $this->label );
+	            $json['id'] = $this->id;
+	            return $json;
+	        }
+		protected function render_content() {
+			$theme_name = wp_get_theme();
+
+			// echo "<pre>";
+			// print_r($theme_name);
+			// echo "</pre>";
+
+			$upgrade_to_pro_link =  apply_filters('sharp_tian_prosectionlinks', 'https://www.inverstheme.com/theme/sharp-tian-pro/');
+			?>
+			<div class="customize-upgrade-pro-message" style="display:none;">
+				<h4 class="customize-control-title"><?php echo wp_kses_post( 'Upgrade to <a href="'.$upgrade_to_pro_link.'" target="_blank" > '.$theme_name.' Pro </a> to be add more option ', 'sharp-tian');  esc_html_e( 'and get the other pro features.', 'sharp-tian') ?></h4>
+			</div>
+			<?php
+		}
+	}
+}

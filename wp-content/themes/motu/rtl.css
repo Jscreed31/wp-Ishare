@@ -1,0 +1,211 @@
+/*
+Theme Name: Motu
+Adding support for languages written in a Right To Left (RTL) direction is easy -
+it's just a matter of overwriting all the horizontal positioning attributes
+of your CSS stylesheet in a separate stylesheet file named rtl.css.
+https://codex.wordpress.org/Right-to-Left_Language_Support
+*/
+body {
+  direction: rtl;
+  unicode-bidi: embed;
+}
+
+.navbar-controls {
+  margin-left: 0;
+  margin-right: 1.25rem;
+}
+
+.main-navigation .svg-icon {
+  padding-left: 0;
+  padding-right: 10px;
+}
+
+@media screen and (min-width: 992px) {
+  .main-navigation div.menu ul ul li {
+    text-align: right;
+  }
+
+  .main-navigation div.menu > ul > li > ul {
+    right: 0;
+    left: inherit;
+  }
+
+  .main-navigation div.menu > ul > li:last-child > ul ul,
+  .main-navigation div.menu > ul > li:nth-last-child(2) ul ul,
+  .main-navigation div.menu > ul > li:nth-last-child(3) ul ul {
+    right: inherit;
+    left: 100%;
+  }
+
+  .main-navigation div.menu ul ul ul {
+    right: 100%;
+    left: inherit;
+  }
+}
+
+.header-item.header-item-right > a {
+  text-align: left;
+}
+
+.post-navigation .arrow {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.block-title-wrapper .block-title {
+  float: right;
+}
+
+.block-title-wrapper:before,
+.comment-reply-title:before {
+  right: 0;
+  left: inherit;
+}
+
+.entry-meta-item .entry-meta-icon {
+  margin-left: 1rem;
+  margin-right: 0;
+}
+
+.left-sidebar .widget-area {
+  padding-left: 30px;
+  padding-right: 5px;
+}
+
+.right-sidebar .widget-area {
+  padding-left: 5px;
+  padding-right: 30px;
+}
+
+.post-navigation .arrow {
+  margin-right: 0;
+  margin-left: 2rem;
+}
+
+.post-navigation .nav-next .arrow {
+  margin-right: 2rem;
+  margin-left: 0;
+}
+
+.header-searchbar #search-closer {
+  right: inherit;
+  left: 0;
+}
+
+.search-form label,
+.search-form .search-submit {
+  float: right;
+}
+
+.search-content-area .recent-list-group:before,
+.search-content-area .recent-list-group .theme-list-article:before {
+  right: 0;
+  left: inherit;
+}
+
+.search-content-area .recent-list-group .theme-list-article:before {
+  -webkit-transform: translateX(50%);
+  -ms-transform: translateX(50%);
+  -moz-transform: translateX(50%);
+  -o-transform: translateX(50%);
+  transform: translateX(50%);
+}
+
+.search-content-area .recent-list-group .theme-list-article {
+  padding-left: 0;
+  padding-right: 30px;
+}
+
+.wp-block-group__inner-container h2::before,
+.widget-title:before,
+.block-title-wrapper .block-title:before {
+  left: inherit;
+  right: 0;
+}
+
+.entry-meta .cat-links > a:not(:first-child)::before {
+  position: unset;
+}
+
+.entry-meta .cat-links > a:not(:first-child)::before {
+  position: absolute;
+  content: "/";
+  top: 50%;
+  transform: translateY(-50%);
+  right: -0.9rem;
+  left: inherit;
+}
+
+.entry-meta .cat-links > a {
+  margin: 0 1rem 0 0;
+}
+
+.theme-border-decor::before {
+  border-left: 2px solid var(--bg-color-light);
+  border-right: none;
+}
+
+.theme-border-decor::after {
+  border-left: none;
+  border-right: 2px solid var(--bg-color-light);
+}
+
+.image-entry-meta {
+  inset: auto 0 0 auto;
+}
+
+.entry-meta-wrapper .entry-meta:not(:last-child)::before {
+  right: inherit;
+  left: -1.8rem;
+}
+
+.entry-meta-wrapper .entry-meta:not(:last-child) {
+  margin-right: 0;
+  margin-left: 2.5rem;
+}
+
+.widget ul,
+.widget ol {
+  padding-right: 0;
+  padding-left: 4rem;
+}
+
+.block-title-wrapper .theme-heading-controls > button {
+  transform: rotate(180deg);
+}
+
+.theme-ticker-area .theme-ticker-left {
+  margin-left: 2rem;
+  margin-right: 0;
+}
+
+.site-navigation .primary-menu ul li.menu-item-has-children:hover > ul,
+.site-navigation .primary-menu ul li.menu-item-has-children:focus > ul,
+.site-navigation .primary-menu ul li.page_item_has_children:hover > ul,
+.site-navigation .primary-menu ul li.page_item_has_children:focus > ul {
+  left: inherit;
+  right: calc(100% + 2rem);
+}
+
+.site-navigation .primary-menu ul ul::after {
+  left: inherit;
+  right: -2.4rem;
+}
+
+.site-navigation .primary-menu li.menu-item-has-children:hover > ul,
+.site-navigation .primary-menu li.menu-item-has-children:focus > ul,
+.site-navigation .primary-menu li.page_item_has_children:hover > ul,
+.site-navigation .primary-menu li.page_item_has_children:focus > ul {
+  left: inherit;
+  right: 0;
+}
+
+.site-navigation .primary-menu ul {
+  left: inherit;
+  right: -999999rem;
+}
+
+.news-article-inlined.news-article-jacketed .data-bg-widget {
+  margin-left: 1rem;
+  margin-right: 0;
+}
